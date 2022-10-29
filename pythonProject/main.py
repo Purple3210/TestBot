@@ -19,7 +19,6 @@ client = discord.Bot(intents=intents, debug_guilds=[1033102371062030376], status
 async def on_ready():
     print(f"{client.user} ist online!")
 
-
 @client.slash_command(description="Lass den Bot eine Nachricht senden")
 async def say(
         ctx,
