@@ -9,7 +9,7 @@ intents.message_content = True
 intents.members = True
 
 
-status = discord.Status.dnd
+status = discord.Status.online
 activity = discord.Activity(type=discord.ActivityType.playing, name="Python")
 
 client = discord.Bot(intents=intents, debug_guilds=[1033102371062030376], status=status, activity=activity)
@@ -19,6 +19,7 @@ client = discord.Bot(intents=intents, debug_guilds=[1033102371062030376], status
 async def on_ready():
     print(f"{client.user} ist online!")
 
+
 @client.slash_command(description="Lass den Bot eine Nachricht senden")
 async def say(
         ctx,
@@ -27,6 +28,7 @@ async def say(
 ):
     await channel.send(text)
     await ctx.respond("Nachricht gesendet", ephemeral=True)
+
 
 @client.slash_command(description="Stalke einen User :P", name="userinfo")
 async def info(
@@ -52,6 +54,7 @@ async def info(
 
     await ctx.respond(embed=embed)
 
+
 @client.event
 async def on_member_join(member):
     embed = discord.Embed(
@@ -67,6 +70,7 @@ if __name__ == "__main__":
     for filename in os.listdir("cogs"):
         if filename.endswith(".py"):
             client.load_extension(f"cogs.{filename[:-3]}")
+            print(filename)
 
     load_dotenv()
     client.run(os.getenv("TOKEN"))

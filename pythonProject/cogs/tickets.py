@@ -21,8 +21,8 @@ class testmodal(discord.ui.Modal):
     def __init__(self, *args, **kwargs):
         super().__init__(
             discord.ui.InputText(
-                label="Embed Titel",
-                placeholder="Placeholder"
+                label="Embed",
+                placeholdere="Placeholder"
             )
             * args,
             **kwargs
