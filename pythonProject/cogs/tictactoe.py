@@ -18,15 +18,24 @@ class Tictactoe(commands.Cog):
             |---|---|---|
 """
         )
-        await ctx.respond(embed=embed, view=selectview)
+        await ctx.respond(embed=embed, view=Selectview())
 
 
 def setup(bot):
     bot.add_cog(Tictactoe(bot))
 
 
-class selectview(discord.ui.View):
-    @discord.ui.button(label=".", style=discord.ButtonStyle.primary, emoji="<:oben_links:1039609734195576844>")
+class Selectview(discord.ui.View):
+    @discord.ui.button(label="test", style=discord.ButtonStyle.primary,
+                       emoji='<:oben_links:1039609734195576844>',
+                       custom_id="tictacttoe_start")
     async def button_callback(self, button, interaction):
-        await interaction.response.send_message("")
-
+        embed2 = discord.Embed(
+            title=f"TicTacToe von {interaction.user}",
+            description="""
+            |-X-|---|---|
+            |---|---|---|
+            |---|---|---|
+"""
+        )
+        await interaction.response.send_message(embed=embed2)

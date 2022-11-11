@@ -11,6 +11,18 @@ class Economy(commands.Cog):
         self.bot = bot
         self.DB = "economy.db"
 
+    @staticmethod
+    def get_balance(credits):
+        balance = 1
+        amount = 100
+
+        while True:
+            credits -= amount
+            if credits < 0:
+                return balance
+            balance += 1
+            amount += 100
+
     @commands.Cog.listener()
     async def on_ready(self):
         async with aiosqlite.connect(self.DB) as db:
@@ -26,4 +38,3 @@ class Economy(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Economy(bot))
-

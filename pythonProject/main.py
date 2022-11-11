@@ -12,7 +12,7 @@ intents.members = True
 status = discord.Status.online
 activity = discord.Activity(type=discord.ActivityType.playing, name="Python")
 
-client = discord.Bot(intents=intents, debug_guilds=[1033102371062030376], status=status, activity=activity)
+client = discord.Bot(intents=intents, debug_guilds=None, status=status, activity=activity)
 
 
 @client.event
