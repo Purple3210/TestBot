@@ -17,7 +17,10 @@ client = discord.Bot(intents=intents, debug_guilds=None, status=status, activity
 
 @client.event
 async def on_ready():
+    print("------------")
     print(f"{client.user} ist online!")
+    print("Pycord Version: "+discord.__version__)
+    print("------------")
 
 
 @client.slash_command(description="Lass den Bot eine Nachricht senden")
@@ -70,7 +73,6 @@ if __name__ == "__main__":
     for filename in os.listdir("cogs"):
         if filename.endswith(".py"):
             client.load_extension(f"cogs.{filename[:-3]}")
-            print(filename)
 
     load_dotenv()
     client.run(os.getenv("TOKEN"))

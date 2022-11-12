@@ -42,9 +42,5 @@ class Controlview(discord.ui.View):
 
     @discord.ui.button(label="Claim", style=discord.ButtonStyle.blurple)
     async def button_callback(self, button, interaction):
-        embed2 = discord.Embed(
-            title=f"Hallo,",
-            description="Bitte begebe dich umgehend in den **Support**!"
-        )
-        embed2.set_thumbnail()
-        await interaction.user.send(embed=embed2)
+        await interaction.user.send(f"Komme bitte in den **Support**!")
+        await interaction.response.send_message("User wurde verständigt", ephemeral=True)
