@@ -25,9 +25,8 @@ class report(commands.Cog):
                             [{ctx.author.mention}]: {text}
 """
         )
-        embed.set_thumbnail(url=self.bot.user.avatar.url)
         channel = await self.bot.fetch_channel(1033103895368577105)
-        await channel.send(embed=embed, view=Controlview(self.user))
+        await channel.send(embed=embed, view=Controlview(user))
         await ctx.respond(f'{ctx.author.mention} dein Report wurde erfolgreich gesendet.', ephemeral=True)
 
 
@@ -40,7 +39,12 @@ class Controlview(discord.ui.View):
         self.user = user
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="Claim", style=discord.ButtonStyle.blurple)
+    @discord.ui.button(label="Claim", style=discord.ButtonStyle.blurple, custom_id="claim")
     async def button_callback(self, button, interaction):
-        await interaction.user.send(f"Komme bitte in den **Support**!")
-        await interaction.response.send_message("User wurde verständigt", ephemeral=True)
+        await self.user.send(f"Komme bitte in den **Support**!")
+        await interaction.message_send("User wurde verständigt", ephemeral=True)
+
+    @discord.ui.button(label="Delete", style=discord.ButtonStyle.danger, custom_id="delete")
+    async def button_callback2(self, button, interaction):
+        await interaction.delete_original_message
+        await interaction.send_message("Report gelöscht", ephemeral=True)

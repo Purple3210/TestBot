@@ -3,6 +3,7 @@ import os
 import discord
 from discord.commands import Option
 from dotenv import load_dotenv
+import config
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -21,6 +22,7 @@ async def on_ready():
     print(f"{client.user} ist online!")
     print("Pycord Version: "+discord.__version__)
     print("------------")
+    print(f"{filename} " + config.load_message)
 
 
 @client.slash_command(description="Lass den Bot eine Nachricht senden")
