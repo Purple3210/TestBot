@@ -26,11 +26,11 @@ class TutorialModal(discord.ui.Modal):
         super().__init__(
             discord.ui.InputText(
                 label="Embed Titel",
-                placeholder="Placeholder"
+                placeholder="Embed Titel"
             ),
             discord.ui.InputText(
                 label="Embed Beschreibung",
-                placeholder="Placeholder",
+                placeholder="Embed Text",
                 style=discord.InputTextStyle.long
             ),
             *args,
