@@ -21,7 +21,7 @@ async def on_ready():
     print("------------")
     print(f"{client.user} ist online!")
     print("Pycord Version: "+discord.__version__)
-    print("------------")
+    print("------------")   
     print(f"{filename} " + config.load_message)
 
 

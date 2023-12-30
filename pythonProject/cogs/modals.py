@@ -14,7 +14,7 @@ class ModalCog(commands.Cog):
 
     @slash_command()
     async def button_modal(self, ctx):
-        await ctx.respond("Hey", view=TutorialView())
+        await ctx.respond("Erstelle ein Embed", view=TutorialView(), ephemeral=True)
 
 
 def setup(bot):
